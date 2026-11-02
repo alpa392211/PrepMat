@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>PrepMat - Preparación de Exámenes de Matemáticas</title>
+  <meta name="description" content="Plataforma modular e interactiva para preparación de exámenes de admisión a Bachillerato y Licenciatura en Matemáticas.">
+  <meta name="theme-color" content="#F4F7F6">
+
+  <!-- KaTeX for pristine mathematical typography without line fracturing -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+
+  <!-- App Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-calibri">
+
+  <!-- Canvas Dinámico de Símbolos Matemáticos Flotantes -->
+  <canvas id="math-bg-canvas" class="math-bg-canvas" aria-hidden="true"></canvas>
+
+  <div id="app-container" class="app-container">
+
+    <!-- Top Navigation Bar -->
+    <header class="top-bar" id="app-top-bar">
+      <div class="top-bar-left">
+        <button id="btn-open-drawer" class="icon-btn" aria-label="Abrir menú de navegación" title="Menú principal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+        <div class="brand-title">
+          <span class="brand-icon">∑</span>
+          <span class="brand-name">Prep<span class="brand-accent">Mat</span></span>
+        </div>
+      </div>
+
+      <!-- Contenedor de Cronómetros (Centrado y 100% visible sin desbordamientos) -->
+      <div class="top-bar-exam-timers" id="top-bar-exam-timers" style="display: none;">
+        <div class="exam-timers-pill" id="exam-timers-pill">
+          <div class="timer-item" title="Tiempo total acumulado del examen">
+            <span class="timer-icon">⏱️</span>
+            <span class="timer-label">Total:</span>
+            <span class="timer-val" id="timer-total">00:00</span>
+          </div>
+          <span class="timer-divider">|</span>
+          <div class="timer-item" title="Tiempo en la pregunta actual">
+            <span class="timer-icon">⏳</span>
+            <span class="timer-label">Pregunta:</span>
+            <span class="timer-val" id="timer-question">00:00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="top-bar-right">
+        <!-- Indicador de Progreso en Examen (Pill pastel) -->
+        <span class="exam-progress-text" id="header-progress-text" style="display: none;">Reactivo 1 / 15</span>
+
+        <!-- Streak Pill -->
+        <div class="streak-pill" id="header-streak-pill" title="Racha de estudio consecutivo">
+          <span class="streak-flame">🔥</span>
+          <span class="streak-count" id="header-streak-count">0</span>
+          <span class="streak-unit">días</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Drawer Navigation Centralizado (Menú Lateral Completo) -->
+    <div id="drawer-backdrop" class="drawer-backdrop"></div>
+    <aside id="drawer" class="drawer" aria-label="Menú principal centralizado">
+      <div class="drawer-header">
+        <div class="drawer-user-info">
+          <div class="user-avatar">📐</div>
+          <div>
+            <h3 class="drawer-title">PrepMat</h3>
+            <p class="drawer-subtitle">Racha actual: <strong id="drawer-streak-text">0 días consecutivos</strong></p>
+          </div>
+        </div>
+        <button id="btn-close-drawer" class="icon-btn close-drawer-btn" aria-label="Cerrar menú">
+          ✕
+        </button>
+      </div>
+
+      <div class="drawer-body">
+        <!-- Navegación Normal (Cuando NO hay examen activo) -->
+        <nav class="drawer-nav" id="drawer-normal-nav">
+          <div class="nav-section-title">Navegación General</div>
+          <button class="drawer-link active" data-view="dashboard">
+            <span class="drawer-icon">🏠</span> Inicio
+          </button>
+          <button class="drawer-link" data-action="scroll-topics">
+            <span class="drawer-icon">📚</span> Selector de Temas
+          </button>
+          <button class="drawer-link" data-action="start-general-exam">
+            <span class="drawer-icon">📝</span> Simulacro General (120 R)
+          </button>
+
+          <div class="nav-section-title">Herramientas Auxiliares</div>
+          <button class="drawer-link" data-action="open-calc-basic">
+            <span class="drawer-icon">➕</span> Calculadora Básica
+          </button>
+          <button class="drawer-link" data-action="open-calc-intermediate">
+            <span class="drawer-icon">🔬</span> Calculadora Científica
+          </button>
+          <a href="https://alpa392211.github.io/Matematica-interactiva/" target="_blank" rel="noopener noreferrer" class="drawer-link highlight-link">
+            <span class="drawer-icon">🌐</span> Matemática Interactiva ↗
+          </a>
+
+          <div class="nav-section-title">Configuración</div>
+          <button class="drawer-link settings-trigger-link" id="btn-open-settings" data-action="open-settings">
+            <span class="drawer-icon">⚙️</span> Ajustes y Personalización
+          </button>
+          <button class="drawer-link" id="btn-drawer-suggestions" data-action="open-suggestions">
+            <span class="drawer-icon">✉️</span> Sugerencias
+          </button>
+        </nav>
+
+        <!-- Navegación Bloqueada en Modo Examen -->
+        <nav class="drawer-nav drawer-exam-nav" id="drawer-exam-nav" style="display: none;">
+          <div class="drawer-exam-notice">
+            <span class="exam-notice-badge">🔒 Modo Examen Activo</span>
+            <p class="exam-notice-text">Durante la prueba, la navegación y ajustes están bloqueados para garantizar la integridad del simulacro.</p>
+          </div>
+
+          <div class="nav-section-title">Herramientas Permitidas</div>
+          <button class="drawer-link" id="drawer-exam-calc-basic" data-action="open-calc-basic">
+            <span class="drawer-icon">➕</span> Calculadora Básica
+          </button>
+          <button class="drawer-link" id="drawer-exam-calc-inter" data-action="open-calc-intermediate">
+            <span class="drawer-icon">🔬</span> Calculadora Científica
+          </button>
+          <div id="drawer-calc-none-notice" class="drawer-notice-box" style="display: none;">
+            <span>🚫</span> Calculadora no permitida en este reactivo
+          </div>
+
+          <div class="nav-section-title">Finalizar Sesión</div>
+          <button class="drawer-link drawer-exit-link" id="btn-drawer-exit-exam" data-action="exit-exam">
+            <span class="drawer-icon">🚪</span> Salir del examen
+          </button>
+        </nav>
+      </div>
+
+      <!-- Pie de Apoyo con Botón Ko-fi Prominente -->
+      <div class="drawer-footer">
+        <p class="kofi-prompt-text">¿Te gusta este proyecto? ¡Apóyame en Ko-fi! ☕</p>
+        <a href="https://ko-fi.com" target="_blank" rel="noopener noreferrer" class="kofi-button" id="btn-kofi-support">
+          <span class="kofi-cup">☕</span>
+          <span class="kofi-text">Apoyar el proyecto en Ko-fi</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+
+      <!-- ================= PANTALLA PRINCIPAL (DASHBOARD) ================= -->
+      <section id="view-dashboard" class="view-section active">
+        
+        <!-- Indicador de Racha Activa ("0 días consecutivos") con icono de fuego -->
+        <div class="hero-streak-card">
+          <div class="streak-visual">
+            <div class="flame-badge">🔥</div>
+            <div class="streak-data">
+              <div class="streak-big-number"><span id="dash-streak-number">0</span> <small>días consecutivos</small></div>
+              <p class="streak-subtext" id="dash-streak-message">¡Inicia una sesión hoy para mantener encendida tu racha de estudio!</p>
+            </div>
+          </div>
+          <div class="streak-tracker">
+            <span class="streak-dot active" title="Día 1"></span>
+            <span class="streak-dot" title="Día 2"></span>
+            <span class="streak-dot" title="Día 3"></span>
+            <span class="streak-dot" title="Día 4"></span>
+            <span class="streak-dot" title="Día 5"></span>
+            <span class="streak-dot" title="Día 6"></span>
+            <span class="streak-dot" title="Día 7"></span>
+          </div>
+        </div>
+
+        <!-- Banner Destacado con Iconografía Matemática (Rediseñado 100% Ancho) -->
+        <div class="featured-banner">
+          <div class="banner-header">
+            <div class="banner-tag">🌟 Recurso Didáctico Destacado</div>
+            <h2 class="banner-title">Matemática Interactiva</h2>
+            <p class="banner-desc">Explora visualizaciones dinámicas, curvas, vectores y simulaciones interactivas para consolidar tu intuición matemática visual.</p>
+          </div>
+
+          <div class="banner-symbols-row" aria-hidden="true">
+            <div class="math-shape shape-integral" title="Cálculo">∫</div>
+            <div class="math-shape shape-delta" title="Geometría y Cambio">Δ</div>
+            <div class="math-shape shape-root" title="Álgebra">√x</div>
+            <div class="math-shape shape-pi" title="Trigonometría">π</div>
+          </div>
+
+          <div class="banner-footer-action">
+            <a href="https://alpa392211.github.io/Matematica-interactiva/" target="_blank" rel="noopener noreferrer" class="banner-cta">
+              <span>Explorar simulaciones ↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Selector de Nivel (Ingreso a Bachillerato vs. Licenciatura) -->
+        <div class="level-selector-wrapper">
+          <label class="section-label">Nivel de preparación:</label>
+          <div class="level-tabs" role="tablist">
+            <button class="level-tab active" data-level="all">Todos los niveles</button>
+            <button class="level-tab" data-level="bachillerato">Ingreso a Bachillerato</button>
+            <button class="level-tab" data-level="licenciatura">Ingreso a Licenciatura</button>
+          </div>
+        </div>
+
+        <!-- Simulacro General (Hasta 120 reactivos) -->
+        <div class="general-exam-card">
+          <div class="general-card-header">
+            <div class="general-badge">Simulador Integral</div>
+            <h3 class="general-title">Examen General de Matemáticas</h3>
+            <p class="general-description">Cubre todas las ramas de matemáticas con curva de dificultad real: reactivos sencillos al inicio y de alta dificultad al final.</p>
+          </div>
+          <div class="general-card-actions">
+            <div class="length-picker">
+              <span class="picker-label">Reactivos:</span>
+              <button class="length-pill active" data-count="15">15</button>
+              <button class="length-pill" data-count="30">30</button>
+              <button class="length-pill" data-count="60">60</button>
+              <button class="length-pill" data-count="120">120 (Completo)</button>
+            </div>
+            <button class="btn-start-general" id="btn-start-general-exam">
+              <span>Comenzar Examen General</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Cabecera de Evaluaciones por Tema Individual -->
+        <div class="topics-header-row" id="section-topics-anchor">
+          <div>
+            <h3 class="section-heading">Exámenes por Rama</h3>
+            <p class="section-subheading">Elige la rama y la cantidad de reactivos para tu sesión intensiva</p>
+          </div>
+          <div class="topic-length-selector">
+            <span class="selector-tag">Reactivos:</span>
+            <div class="btn-group-pills" id="topic-length-group">
+              <button class="pill-option active" data-topic-count="15">15</button>
+              <button class="pill-option" data-topic-count="30">30</button>
+              <button class="pill-option" data-topic-count="45">45</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grilla de 7 Ramas de Matemáticas -->
+        <div class="topics-grid" id="topics-grid">
+          <!-- Populated dynamically via app.js -->
+        </div>
+
+      </section>
+
+
+      <!-- ================= PANTALLA DE EXAMEN ACTIVO ================= -->
+      <section id="view-exam" class="view-section">
+        
+        <!-- Header de Metadatos y Barra de Progreso -->
+        <div class="exam-header-bar">
+          <div class="exam-meta">
+            <span class="meta-tag topic-tag" id="exam-topic-badge">Aritmética</span>
+            <span class="meta-tag level-tag" id="exam-level-badge">Licenciatura</span>
+            <span class="meta-tag difficulty-tag" id="exam-difficulty-badge">Sencilla</span>
+            <span class="meta-tag calc-status-tag" id="exam-calc-status-badge">Sin Calculadora</span>
+          </div>
+          <div class="exam-progress-container">
+            <div class="progress-bar-track">
+              <div class="progress-bar-fill" id="exam-progress-fill" style="width: 0%;"></div>
+            </div>
+            <div class="progress-counter-text" id="exam-counter-text">1 / 15</div>
+          </div>
+        </div>
+
+        <!-- Contenedor del Reactivo (Sin Cortes / Lectura Continua) -->
+        <div class="question-container">
+          <div class="question-card" id="question-card">
+            <div class="question-number-badge" id="question-number-badge">Reactivo 1</div>
+            <div class="question-text" id="question-text">
+              <!-- Renderizado de ecuación continuo -->
+            </div>
+          </div>
+
+          <!-- Lista de 4 Opciones Múltiples (A, B, C, D) -->
+          <div class="options-list" id="options-list" role="radiogroup">
+            <!-- Populated dynamically -->
+          </div>
+
+          <!-- Tarjeta de Explicación Paso a Paso -->
+          <div class="explanation-card" id="explanation-card" style="display: none;">
+            <div class="explanation-header">
+              <span class="explanation-icon" id="explanation-icon">✓</span>
+              <strong id="explanation-title">Explicación Paso a Paso</strong>
+            </div>
+            <div class="explanation-body" id="explanation-text"></div>
+          </div>
+        </div>
+
+        <!-- Barra de Acción Inferior Fija [Regresar] y [Comprobar] / [Continuar] -->
+        <div class="exam-action-bar">
+          <button id="btn-exam-back" class="btn-action btn-secondary" title="Regresar al menú principal">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            <span>Regresar</span>
+          </button>
+
+          <button id="btn-exam-check" class="btn-action btn-primary" disabled>
+            <span id="btn-check-text">Comprobar</span>
+            <svg id="btn-check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>
+          </button>
+        </div>
+
+      </section>
+
+
+      <!-- ================= PANTALLA DE RESULTADOS ================= -->
+      <section id="view-results" class="view-section">
+        <div class="results-card">
+          <div class="results-badge" id="results-badge">¡Completado!</div>
+          <h2 class="results-title">Resumen de tu Desempeño</h2>
+          <p class="results-subtitle" id="results-subtitle">Excelente esfuerzo en tu sesión de preparación.</p>
+
+          <div class="score-circle-wrapper">
+            <div class="score-circle">
+              <span class="score-percentage" id="results-percentage">0%</span>
+              <span class="score-fraction" id="results-fraction">0 / 0 aciertos</span>
+            </div>
+          </div>
+
+          <!-- Celebración de Racha -->
+          <div class="streak-gain-box">
+            <span class="flame-icon">🔥</span>
+            <span>¡Racha actualizada! Tienes <strong id="results-streak-days">1 día</strong> de estudio consecutivo.</span>
+          </div>
+
+          <!-- Desglose por Rama -->
+          <div class="breakdown-grid" id="results-breakdown">
+            <!-- Dynamic stats -->
+          </div>
+
+          <div class="results-actions">
+            <button id="btn-results-home" class="btn-action btn-secondary">
+              <span>Volver al Inicio</span>
+            </button>
+            <button id="btn-results-retry" class="btn-action btn-primary">
+              <span>Nuevo Intento</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ================= CALCULADORA MODAL BÁSICA ================= -->
+    <div id="modal-calc-basic" class="calc-modal" aria-hidden="true" role="dialog" aria-labelledby="calc-basic-title">
+      <div class="calc-dialog">
+        <div class="calc-header">
+          <div class="calc-title-box">
+            <span class="calc-badge-icon">➕</span>
+            <h4 id="calc-basic-title">Calculadora Básica</h4>
+          </div>
+          <button class="calc-close-btn" data-close-calc="basic" aria-label="Cerrar calculadora">✕</button>
+        </div>
+        <div class="calc-display">
+          <div class="calc-history" id="basic-calc-history"></div>
+          <div class="calc-current" id="basic-calc-screen">0</div>
+        </div>
+        <div class="calc-keypad basic-grid">
+          <button class="calc-key key-fn" data-op="clear">AC</button>
+          <button class="calc-key key-fn" data-op="plusminus">±</button>
+          <button class="calc-key key-fn" data-op="percent">%</button>
+          <button class="calc-key key-op" data-op="/">÷</button>
+
+          <button class="calc-key key-num" data-num="7">7</button>
+          <button class="calc-key key-num" data-num="8">8</button>
+          <button class="calc-key key-num" data-num="9">9</button>
+          <button class="calc-key key-op" data-op="*">×</button>
+
+          <button class="calc-key key-num" data-num="4">4</button>
+          <button class="calc-key key-num" data-num="5">5</button>
+          <button class="calc-key key-num" data-num="6">6</button>
+          <button class="calc-key key-op" data-op="-">−</button>
+
+          <button class="calc-key key-num" data-num="1">1</button>
+          <button class="calc-key key-num" data-num="2">2</button>
+          <button class="calc-key key-num" data-num="3">3</button>
+          <button class="calc-key key-op" data-op="+">+</button>
+
+          <button class="calc-key key-num key-zero" data-num="0">0</button>
+          <button class="calc-key key-num" data-num=".">.</button>
+          <button class="calc-key key-equals" data-op="equals">=</button>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ================= CALCULADORA MODAL CIENTÍFICA INTERMEDIA ================= -->
+    <div id="modal-calc-intermediate" class="calc-modal" aria-hidden="true" role="dialog" aria-labelledby="calc-inter-title">
+      <div class="calc-dialog calc-dialog-wide">
+        <div class="calc-header">
+          <div class="calc-title-box">
+            <span class="calc-badge-icon">🔬</span>
+            <h4 id="calc-inter-title">Calculadora Científica</h4>
+            <span class="calc-mode-indicator" id="inter-angle-mode">DEG</span>
+          </div>
+          <button class="calc-close-btn" data-close-calc="intermediate" aria-label="Cerrar calculadora">✕</button>
+        </div>
+        <div class="calc-display">
+          <div class="calc-history" id="inter-calc-history"></div>
+          <div class="calc-current" id="inter-calc-screen">0</div>
+        </div>
+        <div class="calc-keypad inter-grid">
+          <!-- Scientific Function Row 1 -->
+          <button class="calc-key key-sci" data-sci="deg-rad" id="btn-deg-rad">DEG/RAD</button>
+          <button class="calc-key key-sci" data-sci="sin">sin</button>
+          <button class="calc-key key-sci" data-sci="cos">cos</button>
+          <button class="calc-key key-sci" data-sci="tan">tan</button>
+          <button class="calc-key key-fn" data-op="clear">AC</button>
+          <button class="calc-key key-fn" data-op="backspace">⌫</button>
+
+          <!-- Scientific Function Row 2 -->
+          <button class="calc-key key-sci" data-sci="pi">π</button>
+          <button class="calc-key key-sci" data-sci="sqrt">√x</button>
+          <button class="calc-key key-sci" data-sci="sq">x²</button>
+          <button class="calc-key key-sci" data-sci="power">xʸ</button>
+          <button class="calc-key key-fn" data-op="paren-open">(</button>
+          <button class="calc-key key-fn" data-op="paren-close">)</button>
+
+          <!-- Numbers & Operations Row 3 -->
+          <button class="calc-key key-sci" data-sci="e">e</button>
+          <button class="calc-key key-sci" data-sci="log">log</button>
+          <button class="calc-key key-num" data-num="7">7</button>
+          <button class="calc-key key-num" data-num="8">8</button>
+          <button class="calc-key key-num" data-num="9">9</button>
+          <button class="calc-key key-op" data-op="/">÷</button>
+
+          <!-- Numbers & Operations Row 4 -->
+          <button class="calc-key key-sci" data-sci="ln">ln</button>
+          <button class="calc-key key-sci" data-sci="inv">1/x</button>
+          <button class="calc-key key-num" data-num="4">4</button>
+          <button class="calc-key key-num" data-num="5">5</button>
+          <button class="calc-key key-num" data-num="6">6</button>
+          <button class="calc-key key-op" data-op="*">×</button>
+
+          <!-- Numbers & Operations Row 5 -->
+          <button class="calc-key key-sci" data-sci="root-y">ʸ√x</button>
+          <button class="calc-key key-sci" data-sci="fact">n!</button>
+          <button class="calc-key key-num" data-num="1">1</button>
+          <button class="calc-key key-num" data-num="2">2</button>
+          <button class="calc-key key-num" data-num="3">3</button>
+          <button class="calc-key key-op" data-op="-">−</button>
+
+          <!-- Bottom Row -->
+          <button class="calc-key key-fn" data-op="plusminus">±</button>
+          <button class="calc-key key-fn" data-op="percent">%</button>
+          <button class="calc-key key-num" data-num="0">0</button>
+          <button class="calc-key key-num" data-num=".">.</button>
+          <button class="calc-key key-equals key-span-2" data-op="equals">=</button>
+          <button class="calc-key key-op" data-op="+">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= MODAL AJUSTES Y PERSONALIZACIÓN ================= -->
+    <div id="modal-settings" class="calc-modal settings-modal" aria-hidden="true" role="dialog" aria-labelledby="settings-modal-title">
+      <div class="calc-dialog settings-dialog">
+        <div class="calc-header">
+          <div class="calc-title-box">
+            <span class="calc-badge-icon">⚙️</span>
+            <h4 id="settings-modal-title">Ajustes y Personalización</h4>
+          </div>
+          <button class="calc-close-btn" id="btn-close-settings" aria-label="Cerrar ajustes">✕</button>
+        </div>
+        <div class="settings-modal-body">
+          <!-- Tipografía -->
+          <div class="setting-group">
+            <div class="setting-header">
+              <span class="setting-label">Tipografía:</span>
+              <span class="setting-current" id="current-font-label">Calibri</span>
+            </div>
+            <div class="segmented-control font-switch">
+              <button class="segment-btn active" id="btn-font-calibri" type="button">Calibri</button>
+              <button class="segment-btn" id="btn-font-times" type="button">Times New Roman</button>
+            </div>
+          </div>
+
+          <!-- Tema Visual -->
+          <div class="setting-group">
+            <div class="setting-header">
+              <span class="setting-label">Tema Visual:</span>
+              <span class="setting-current" id="current-theme-label">Claro</span>
+            </div>
+            <div class="segmented-control theme-switch">
+              <button class="segment-btn active" id="btn-theme-light" type="button">
+                <span>☀️</span> Modo Claro
+              </button>
+              <button class="segment-btn" id="btn-theme-dark" type="button">
+                <span>🌙</span> Modo Oscuro
+              </button>
+            </div>
+          </div>
+
+          <!-- Racha y Notificaciones -->
+          <div class="setting-group">
+            <div class="setting-header">
+              <span class="setting-label">Racha y Notificaciones</span>
+            </div>
+            <div class="streak-status-display" style="margin-bottom: 10px;">
+              <span class="flame-icon-small">🔥</span>
+              <div>
+                <strong id="drawer-streak-summary">0 días de racha activa</strong>
+                <p class="drawer-streak-hint" id="drawer-streak-hint">Completa un examen hoy para no perderla.</p>
+              </div>
+            </div>
+            <div class="drawer-setting-item">
+              <span>Recordatorios diarios (24h)</span>
+              <button class="toggle-pill-btn" id="btn-notification-toggle">
+                <span id="notification-status-text">Activar</span>
+              </button>
+            </div>
+            <div class="drawer-setting-item">
+              <span>Reiniciar Racha</span>
+              <button class="text-subtle-btn" id="btn-reset-stats">Reiniciar Racha / Reset</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= MODAL CONFIRMACIÓN DE INICIO DE EXAMEN ================= -->
+    <div id="modal-confirm-exam" class="calc-modal" aria-hidden="true" role="dialog" aria-labelledby="confirm-exam-title">
+      <div class="calc-dialog confirm-dialog">
+        <div class="calc-header">
+          <div class="calc-title-box">
+            <span class="calc-badge-icon">⚠️</span>
+            <h4 id="confirm-exam-title">Confirmación de Examen</h4>
+          </div>
+          <button class="calc-close-btn" id="btn-close-confirm-exam" aria-label="Cerrar confirmación">✕</button>
+        </div>
+        <div class="confirm-modal-body">
+          <p class="confirm-modal-text">Estás por iniciar el examen. Durante la prueba el menú de navegación quedará bloqueado. ¿Deseas comenzar?</p>
+          <div class="confirm-modal-summary" id="confirm-exam-summary"></div>
+        </div>
+        <div class="confirm-modal-actions">
+          <button class="btn-action btn-secondary" id="btn-cancel-exam-start">Cancelar</button>
+          <button class="btn-action btn-primary" id="btn-proceed-exam-start">Comenzar Examen</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notification Toast / Dialog -->
+    <div id="toast" class="toast" role="alert" aria-live="polite"></div>
+
+  </div>
+
+  <!-- App Logic Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>

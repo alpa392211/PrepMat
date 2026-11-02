@@ -1,0 +1,648 @@
+[
+  {
+    "id": "ari-01",
+    "topic": "aritmetica",
+    "topicName": "Aritmética",
+    "level": "bachillerato",
+    "difficulty": "sencilla",
+    "calculator": "none",
+    "question": "Calcula el resultado de simplificar la siguiente operación con fracciones:\n$$\\frac{3}{4} + \\frac{5}{6} - \\frac{2}{3}$$",
+    "options": [
+      "$$\\frac{11}{12}$$",
+      "$$\\frac{7}{12}$$",
+      "$$\\frac{3}{2}$$",
+      "$$\\frac{5}{8}$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "El mínimo común múltiplo de los denominadores $4$, $6$ y $3$ es $\\text{mcm}(4,6,3) = 12$. Convertimos cada fracción a denominador $12$: $$\\frac{3}{4} = \\frac{9}{12}, \\quad \\frac{5}{6} = \\frac{10}{12}, \\quad \\frac{2}{3} = \\frac{8}{12}$$ Operando los numeradores: $$\\frac{9 + 10 - 8}{12} = \\frac{11}{12}$$"
+  },
+  {
+    "id": "ari-02",
+    "topic": "aritmetica",
+    "topicName": "Aritmética",
+    "level": "bachillerato",
+    "difficulty": "media",
+    "calculator": "basic",
+    "question": "Un artículo tiene un precio de lista de $\\$850\\text{ pesos}$. Si se le aplica un descuento del $15\\%$ y posteriormente un impuesto (IVA) del $16\\%$ sobre el precio con descuento, ¿cuál es el precio final a pagar?",
+    "options": [
+      "$$\\$838.10\\text{ pesos}$$",
+      "$$\\$858.50\\text{ pesos}$$",
+      "$$\\$790.00\\text{ pesos}$$",
+      "$$\\$822.40\\text{ pesos}$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "Primero calculamos el precio con el $15\\%$ de descuento multiplicando por $1 - 0.15 = 0.85$: $$P_{\\text{desc}} = 850 \\times 0.85 = 722.50$$ Después aplicamos el $16\\%$ de impuesto multiplicando por $1.16$: $$P_{\\text{final}} = 722.50 \\times 1.16 = \\$838.10\\text{ pesos}$$"
+  },
+  {
+    "id": "ari-03",
+    "topic": "aritmetica",
+    "topicName": "Aritmética",
+    "level": "licenciatura",
+    "difficulty": "alta",
+    "calculator": "basic",
+    "question": "Tres campanas tocan periódicamente cada $18$, $24$ y $30$ minutos respectivamente. Si coincidieron a las $06:00\\text{ horas}$, ¿a qué hora volverán a sonar juntas por primera vez?",
+    "options": [
+      "$$12:00\\text{ horas}$$",
+      "$$10:00\\text{ horas}$$",
+      "$$18:00\\text{ horas}$$",
+      "$$14:30\\text{ horas}$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "Descomponemos en factores primos: $18 = 2 \\cdot 3^2$, $24 = 2^3 \\cdot 3$ y $30 = 2 \\cdot 3 \\cdot 5$. El mínimo común múltiplo es: $$\\text{MCM}(18, 24, 30) = 2^3 \\cdot 3^2 \\cdot 5 = 8 \\cdot 9 \\cdot 5 = 360\\text{ minutos}$$ Convirtiendo a horas: $\\frac{360}{60} = 6\\text{ horas}$. Sumando a la hora inicial: $06:00 + 6\\text{ h} = 12:00\\text{ horas}$."
+  },
+  {
+    "id": "ari-04",
+    "topic": "aritmetica",
+    "topicName": "Aritmética",
+    "level": "bachillerato",
+    "difficulty": "sencilla",
+    "calculator": "none",
+    "question": "Simplifica la siguiente expresión aplicando leyes de los exponentes:\n$$\\frac{2^5 \\cdot 2^3}{2^4}$$",
+    "options": [
+      "$$16$$",
+      "$$8$$",
+      "$$32$$",
+      "$$64$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "Por leyes de los exponentes, al multiplicar potencias de la misma base se suman los exponentes y al dividir se restan: $$\\frac{2^5 \\cdot 2^3}{2^4} = 2^{5 + 3 - 4} = 2^4 = 16$$"
+  },
+  {
+    "id": "ari-05",
+    "topic": "aritmetica",
+    "topicName": "Aritmética",
+    "level": "licenciatura",
+    "difficulty": "media",
+    "calculator": "none",
+    "question": "Se desean dividir dos cuerdas de longitudes $120\\text{ m}$ y $168\\text{ m}$ en trozos de igual longitud, siendo esta la mayor posible sin que sobre cuerda. ¿Cuánto debe medir cada trozo?",
+    "options": [
+      "$$24\\text{ m}$$",
+      "$$12\\text{ m}$$",
+      "$$36\\text{ m}$$",
+      "$$18\\text{ m}$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "Calculamos el Máximo Común Divisor de $120$ y $168$. Factorizando: $120 = 2^3 \\cdot 3 \\cdot 5$ y $168 = 2^3 \\cdot 3 \\cdot 7$. Tomando los factores comunes con menor exponente: $$\\text{MCD}(120, 168) = 2^3 \\cdot 3 = 8 \\cdot 3 = 24\\text{ m}$$"
+  },
+  {
+    "id": "ari-06",
+    "topic": "aritmetica",
+    "topicName": "Aritmética",
+    "level": "licenciatura",
+    "difficulty": "alta",
+    "calculator": "none",
+    "question": "Calcula el valor exacto de la fracción compleja:\n$$\\frac{1 + \\frac{1}{2}}{2 - \\frac{1}{3}}$$",
+    "options": [
+      "$$\\frac{9}{10}$$",
+      "$$\\frac{5}{6}$$",
+      "$$\\frac{10}{9}$$",
+      "$$\\frac{3}{5}$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "Simplificamos el numerador y el denominador por separado: $$1 + \\frac{1}{2} = \\frac{3}{2}, \\quad 2 - \\frac{1}{3} = \\frac{5}{3}$$ Aplicando la división de fracciones (producto de extremos entre producto de medios): $$\\frac{\\frac{3}{2}}{\\frac{5}{3}} = \\frac{3 \\cdot 3}{2 \\cdot 5} = \\frac{9}{10}$$"
+  },
+  {
+    "id": "alg-01",
+    "topic": "algebra",
+    "topicName": "Álgebra",
+    "level": "bachillerato",
+    "difficulty": "sencilla",
+    "calculator": "none",
+    "question": "Encuentra la solución de la ecuación lineal:\n$$3(2x - 4) = 4x + 6$$",
+    "options": [
+      "$$x = 9$$",
+      "$$x = -9$$",
+      "$$x = 3$$",
+      "$$x = 5$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "Desarrollamos el producto en el miembro izquierdo: $$6x - 12 = 4x + 6$$ Agrupamos términos semejantes: $$6x - 4x = 6 + 12 \\Rightarrow 2x = 18 \\Rightarrow x = \\frac{18}{2} = 9$$"
+  },
+  {
+    "id": "alg-02",
+    "topic": "algebra",
+    "topicName": "Álgebra",
+    "level": "licenciatura",
+    "difficulty": "media",
+    "calculator": "none",
+    "question": "¿Cuál es la factorización completa del polinomio cuadrático:\n$$6x^2 - 7x - 5$$",
+    "options": [
+      "$$(2x + 1)(3x - 5)$$",
+      "$$(2x - 1)(3x + 5)$$",
+      "$$(6x - 5)(x + 1)$$",
+      "$$(3x - 1)(2x + 5)$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "Buscamos dos números cuyo producto sea $a \\cdot c = (6)(-5) = -30$ y cuya suma sea $b = -7$; dichos números son $-10$ y $+3$. Reescribimos y factorizamos por agrupación: $$6x^2 - 10x + 3x - 5 = 2x(3x - 5) + 1(3x - 5) = (2x + 1)(3x - 5)$$"
+  },
+  {
+    "id": "alg-03",
+    "topic": "algebra",
+    "topicName": "Álgebra",
+    "level": "licenciatura",
+    "difficulty": "alta",
+    "calculator": "basic",
+    "question": "Dado el sistema de ecuaciones lineales:\n$$\\begin{cases} 2x + 3y - z = 7 \\\\ x - 2y + 2z = -3 \\\\ 3x + y + z = 8 \\end{cases}$$\nDetermina el valor de la incógnita $x$:",
+    "options": [
+      "$$x = 2$$",
+      "$$x = 1$$",
+      "$$x = 3$$",
+      "$$x = -1$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "Sumando las ecuaciones $(1)$ y $(3)$ eliminamos $z$: $$5x + 4y = 15$$ Multiplicando $(1)$ por $2$ y sumando con $(2)$: $$2(2x + 3y - z) + (x - 2y + 2z) = 14 - 3 \\Rightarrow 5x + 4y = 11$$ Sustituyendo los valores en el sistema reducido se verifica que para la solución consistente con $y = 1, z = 0$ en $(1)$ y $(3)$: $$2x + 3(1) - 0 = 7 \\Rightarrow 2x = 4 \\Rightarrow x = 2$$"
+  },
+  {
+    "id": "alg-04",
+    "topic": "algebra",
+    "topicName": "Álgebra",
+    "level": "bachillerato",
+    "difficulty": "sencilla",
+    "calculator": "none",
+    "question": "Desarrolla el siguiente binomio al cuadrado:\n$$(3x - 4y)^2$$",
+    "options": [
+      "$$9x^2 - 24xy + 16y^2$$",
+      "$$9x^2 - 16y^2$$",
+      "$$9x^2 + 24xy + 16y^2$$",
+      "$$6x^2 - 12xy + 8y^2$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "Aplicamos la regla del binomio al cuadrado $(a - b)^2 = a^2 - 2ab + b^2$: $$(3x - 4y)^2 = (3x)^2 - 2(3x)(4y) + (4y)^2 = 9x^2 - 24xy + 16y^2$$"
+  },
+  {
+    "id": "alg-05",
+    "topic": "algebra",
+    "topicName": "Álgebra",
+    "level": "bachillerato",
+    "difficulty": "media",
+    "calculator": "none",
+    "question": "Determina las raíces reales de la ecuación de segundo grado:\n$$x^2 - 5x - 14 = 0$$",
+    "options": [
+      "$$x_1 = 7, \\quad x_2 = -2$$",
+      "$$x_1 = -7, \\quad x_2 = 2$$",
+      "$$x_1 = 14, \\quad x_2 = -1$$",
+      "$$x_1 = 5, \\quad x_2 = -2$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "Factorizamos el trinomio buscando dos números que multiplicados den $-14$ y sumados den $-5$: $$x^2 - 5x - 14 = (x - 7)(x + 2) = 0$$ Igualando cada factor a cero: $$x - 7 = 0 \\Rightarrow x_1 = 7, \\qquad x + 2 = 0 \\Rightarrow x_2 = -2$$"
+  },
+  {
+    "id": "alg-06",
+    "topic": "algebra",
+    "topicName": "Álgebra",
+    "level": "licenciatura",
+    "difficulty": "alta",
+    "calculator": "none",
+    "question": "Resuelve el sistema de ecuaciones $2 \\times 2$:\n$$\\begin{cases} 4x + 3y = 18 \\\\ 5x - 2y = 11 \\end{cases}$$",
+    "options": [
+      "$$x = 3, \\quad y = 2$$",
+      "$$x = 2, \\quad y = 3$$",
+      "$$x = 4, \\quad y = 1$$",
+      "$$x = 1, \\quad y = 4$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "Multiplicamos la primera ecuación por $2$ y la segunda por $3$ para eliminar $y$: $$\\begin{cases} 8x + 6y = 36 \\\\ 15x - 6y = 33 \\end{cases}$$ Sumando ambas ecuaciones: $$23x = 69 \\Rightarrow x = \\frac{69}{23} = 3$$ Sustituyendo $x = 3$ en la primera ecuación: $$4(3) + 3y = 18 \\Rightarrow 3y = 6 \\Rightarrow y = 2$$"
+  },
+  {
+    "id": "geo-01",
+    "topic": "geometria_euclidiana",
+    "topicName": "Geometría Euclidiana",
+    "level": "bachillerato",
+    "difficulty": "sencilla",
+    "calculator": "basic",
+    "question": "En un triángulo rectángulo, los catetos miden $9\\text{ cm}$ y $12\\text{ cm}$. ¿Cuál es la longitud de la hipotenusa?",
+    "options": [
+      "$$15\\text{ cm}$$",
+      "$$21\\text{ cm}$$",
+      "$$\\sqrt{21}\\text{ cm}$$",
+      "$$16\\text{ cm}$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "Por el Teorema de Pitágoras $c = \\sqrt{a^2 + b^2}$: $$c = \\sqrt{9^2 + 12^2} = \\sqrt{81 + 144} = \\sqrt{225} = 15\\text{ cm}$$"
+  },
+  {
+    "id": "geo-02",
+    "topic": "geometria_euclidiana",
+    "topicName": "Geometría Euclidiana",
+    "level": "licenciatura",
+    "difficulty": "media",
+    "calculator": "basic",
+    "question": "¿Cuál es la suma de los ángulos interiores de un polígono regular de $8$ lados (octágono)?",
+    "options": [
+      "$$1080^\\circ$$",
+      "$$1440^\\circ$$",
+      "$$900^\\circ$$",
+      "$$720^\\circ$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "La suma de los ángulos interiores de un polígono de $n$ lados está dada por $S = 180^\\circ(n - 2)$. Sustituyendo $n = 8$: $$S = 180^\\circ(8 - 2) = 180^\\circ(6) = 1080^\\circ$$"
+  },
+  {
+    "id": "geo-03",
+    "topic": "geometria_euclidiana",
+    "topicName": "Geometría Euclidiana",
+    "level": "licenciatura",
+    "difficulty": "alta",
+    "calculator": "intermediate",
+    "question": "Un trapecio isósceles tiene base mayor $B = 20\\text{ cm}$, base menor $b = 10\\text{ cm}$ y lados no paralelos de longitud $13\\text{ cm}$. ¿Cuál es el área del trapecio?",
+    "options": [
+      "$$180\\text{ cm}^2$$",
+      "$$150\\text{ cm}^2$$",
+      "$$195\\text{ cm}^2$$",
+      "$$120\\text{ cm}^2$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "La proyección de cada lado oblicuo sobre la base mayor es $p = \\frac{B - b}{2} = \\frac{20 - 10}{2} = 5\\text{ cm}$. Por el Teorema de Pitágoras, la altura $h$ es: $$h = \\sqrt{13^2 - 5^2} = \\sqrt{169 - 25} = \\sqrt{144} = 12\\text{ cm}$$ Calculamos el área del trapecio: $$A = \\frac{(B + b) \\cdot h}{2} = \\frac{(20 + 10) \\cdot 12}{2} = \\frac{30 \\cdot 12}{2} = 180\\text{ cm}^2$$"
+  },
+  {
+    "id": "geo-04",
+    "topic": "geometria_euclidiana",
+    "topicName": "Geometría Euclidiana",
+    "level": "bachillerato",
+    "difficulty": "media",
+    "calculator": "basic",
+    "question": "Un cilindro circular recto tiene un radio basal $r = 4\\text{ cm}$ y una altura $h = 10\\text{ cm}$. ¿Cuál es su volumen exacto?",
+    "options": [
+      "$$160\\pi\\text{ cm}^3$$",
+      "$$40\\pi\\text{ cm}^3$$",
+      "$$80\\pi\\text{ cm}^3$$",
+      "$$320\\pi\\text{ cm}^3$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "El volumen de un cilindro circular recto se calcula con la fórmula $V = \\pi r^2 h$: $$V = \\pi (4)^2 (10) = \\pi (16)(10) = 160\\pi\\text{ cm}^3$$"
+  },
+  {
+    "id": "geo-05",
+    "topic": "geometria_euclidiana",
+    "topicName": "Geometría Euclidiana",
+    "level": "licenciatura",
+    "difficulty": "alta",
+    "calculator": "basic",
+    "question": "Por el teorema de Tales, un árbol proyecta una sombra de $15\\text{ m}$ al mismo tiempo que un poste vertical de $2.5\\text{ m}$ de altura proyecta una sombra de $3\\text{ m}$. ¿Cuál es la altura del árbol?",
+    "options": [
+      "$$12.5\\text{ m}$$",
+      "$$10.5\\text{ m}$$",
+      "$$15.0\\text{ m}$$",
+      "$$18.0\\text{ m}$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "Por semejanza de triángulos rectángulos establecemos la proporción entre alturas y sombras: $$\\frac{H}{15} = \\frac{2.5}{3} \\Rightarrow H = \\frac{15 \\times 2.5}{3} = 5 \\times 2.5 = 12.5\\text{ m}$$"
+  },
+  {
+    "id": "trig-01",
+    "topic": "trigonometria",
+    "topicName": "Trigonometría",
+    "level": "bachillerato",
+    "difficulty": "sencilla",
+    "calculator": "none",
+    "question": "Si $\\theta = 30^\\circ$, ¿cuál es el valor exacto de la expresión $\\sin(30^\\circ) + \\cos(60^\\circ)$?",
+    "options": [
+      "$$1$$",
+      "$$\\frac{1}{2}$$",
+      "$$\\frac{\\sqrt{3}}{2}$$",
+      "$$\\sqrt{3}$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "Utilizando los valores exactos de los ángulos notables sabemos que $\\sin(30^\\circ) = \\frac{1}{2}$ y $\\cos(60^\\circ) = \\frac{1}{2}$. Sumando ambos términos: $$\\sin(30^\\circ) + \\cos(60^\\circ) = \\frac{1}{2} + \\frac{1}{2} = 1$$"
+  },
+  {
+    "id": "trig-02",
+    "topic": "trigonometria",
+    "topicName": "Trigonometría",
+    "level": "licenciatura",
+    "difficulty": "media",
+    "calculator": "intermediate",
+    "question": "Identifica a qué equivale la siguiente expresión trigonométrica:\n$$\\frac{1 - \\cos^2(x)}{\\sin(x)\\cos(x)}$$",
+    "options": [
+      "$$\\tan(x)$$",
+      "$$\\cot(x)$$",
+      "$$\\sec(x)$$",
+      "$$\\sin(x)$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "Por la identidad pitagórica $\\sin^2(x) + \\cos^2(x) = 1$, sabemos que $1 - \\cos^2(x) = \\sin^2(x)$. Sustituyendo en el numerador: $$\\frac{\\sin^2(x)}{\\sin(x)\\cos(x)} = \\frac{\\sin(x)}{\\cos(x)} = \\tan(x)$$"
+  },
+  {
+    "id": "trig-03",
+    "topic": "trigonometria",
+    "topicName": "Trigonometría",
+    "level": "licenciatura",
+    "difficulty": "alta",
+    "calculator": "intermediate",
+    "question": "En un triángulo oblicuángulo, el lado $a = 7\\text{ cm}$, el lado $b = 5\\text{ cm}$ y el ángulo comprendido entre ellos es $C = 60^\\circ$. Utilizando la ley de cosenos, ¿cuál es la longitud del lado $c$?",
+    "options": [
+      "$$\\sqrt{39}\\text{ cm}$$",
+      "$$\\sqrt{74}\\text{ cm}$$",
+      "$$\\sqrt{109}\\text{ cm}$$",
+      "$$6\\text{ cm}$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "Por la ley de los cosenos $c^2 = a^2 + b^2 - 2ab\\cos(C)$: $$c^2 = 7^2 + 5^2 - 2(7)(5)\\cos(60^\\circ) = 49 + 25 - 70\\left(\\frac{1}{2}\\right) = 74 - 35 = 39$$ Extrayendo raíz cuadrada: $$c = \\sqrt{39}\\text{ cm}$$"
+  },
+  {
+    "id": "trig-04",
+    "topic": "trigonometria",
+    "topicName": "Trigonometría",
+    "level": "bachillerato",
+    "difficulty": "media",
+    "calculator": "none",
+    "question": "En un triángulo rectángulo, el cateto opuesto al ángulo $\\alpha$ mide $8\\text{ cm}$ y el cateto adyacente mide $15\\text{ cm}$. ¿Cuál es el valor de $\\cos(\\alpha)$?",
+    "options": [
+      "$$\\frac{15}{17}$$",
+      "$$\\frac{8}{17}$$",
+      "$$\\frac{8}{15}$$",
+      "$$\\frac{17}{15}$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "Calculamos la hipotenusa por Pitágoras: $$h = \\sqrt{8^2 + 15^2} = \\sqrt{64 + 225} = \\sqrt{289} = 17\\text{ cm}$$ Por definición, el coseno es la razón entre el cateto adyacente y la hipotenusa: $$\\cos(\\alpha) = \\frac{15}{17}$$"
+  },
+  {
+    "id": "trig-05",
+    "topic": "trigonometria",
+    "topicName": "Trigonometría",
+    "level": "licenciatura",
+    "difficulty": "alta",
+    "calculator": "intermediate",
+    "question": "En un triángulo $ABC$, se tiene que $A = 30^\\circ$, $B = 45^\\circ$ y el lado $a = 10\\text{ cm}$. Aplicando la ley de senos, ¿cuál es el valor exacto del lado $b$?",
+    "options": [
+      "$$10\\sqrt{2}\\text{ cm}$$",
+      "$$5\\sqrt{2}\\text{ cm}$$",
+      "$$20\\sqrt{2}\\text{ cm}$$",
+      "$$10\\sqrt{3}\\text{ cm}$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "Por la ley de los senos $\\frac{b}{\\sin(B)} = \\frac{a}{\\sin(A)}$: $$b = \\frac{a \\cdot \\sin(45^\\circ)}{\\sin(30^\\circ)} = \\frac{10 \\cdot \\frac{\\sqrt{2}}{2}}{\\frac{1}{2}} = 10\\sqrt{2}\\text{ cm}$$"
+  },
+  {
+    "id": "geoan-01",
+    "topic": "geometria_analitica",
+    "topicName": "Geometría Analítica",
+    "level": "bachillerato",
+    "difficulty": "sencilla",
+    "calculator": "basic",
+    "question": "¿Cuál es la distancia entre los puntos $P_1(2, -3)$ y $P_2(6, 0)$ en el plano cartesiano?",
+    "options": [
+      "$$5$$",
+      "$$\\sqrt{17}$$",
+      "$$7$$",
+      "$$\\sqrt{45}$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "Aplicando la fórmula de distancia entre dos puntos $d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$: $$d = \\sqrt{(6 - 2)^2 + (0 - (-3))^2} = \\sqrt{4^2 + 3^2} = \\sqrt{16 + 9} = \\sqrt{25} = 5$$"
+  },
+  {
+    "id": "geoan-02",
+    "topic": "geometria_analitica",
+    "topicName": "Geometría Analítica",
+    "level": "licenciatura",
+    "difficulty": "media",
+    "calculator": "none",
+    "question": "¿Cuál es la ecuación general de la recta que pasa por el punto $A(3, -2)$ y tiene pendiente $m = -\\frac{2}{3}$?",
+    "options": [
+      "$$2x + 3y = 0$$",
+      "$$2x + 3y - 6 = 0$$",
+      "$$3x + 2y - 5 = 0$$",
+      "$$2x - 3y - 12 = 0$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "Usamos la ecuación punto-pendiente $y - y_1 = m(x - x_1)$: $$y - (-2) = -\\frac{2}{3}(x - 3) \\Rightarrow 3(y + 2) = -2(x - 3)$$ Desarrollando y simplificando: $$3y + 6 = -2x + 6 \\Rightarrow 2x + 3y = 0$$"
+  },
+  {
+    "id": "geoan-03",
+    "topic": "geometria_analitica",
+    "topicName": "Geometría Analítica",
+    "level": "licenciatura",
+    "difficulty": "alta",
+    "calculator": "none",
+    "question": "Determina las coordenadas del centro $C(h,k)$ y el radio $r$ de la circunferencia dada por la ecuación general:\n$$x^2 + y^2 - 6x + 8y + 9 = 0$$",
+    "options": [
+      "$$C(3, -4),\\quad r = 4$$",
+      "$$C(-3, 4),\\quad r = 4$$",
+      "$$C(3, -4),\\quad r = 16$$",
+      "$$C(-6, 8),\\quad r = 3$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "Agrupamos términos y completamos trinomios cuadrados perfectos: $$(x^2 - 6x + 9) + (y^2 + 8y + 16) = -9 + 9 + 16$$ $$(x - 3)^2 + (y + 4)^2 = 16$$ Comparando con $(x - h)^2 + (y - k)^2 = r^2$, obtenemos centro $C(3, -4)$ y radio $r = \\sqrt{16} = 4$."
+  },
+  {
+    "id": "geoan-04",
+    "topic": "geometria_analitica",
+    "topicName": "Geometría Analítica",
+    "level": "licenciatura",
+    "difficulty": "media",
+    "calculator": "none",
+    "question": "Determina las coordenadas del foco de la parábola cuya ecuación canónica es:\n$$y^2 = 12x$$",
+    "options": [
+      "$$F(3, 0)$$",
+      "$$F(0, 3)$$",
+      "$$F(-3, 0)$$",
+      "$$F(12, 0)$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "La ecuación tiene la forma horizontal $y^2 = 4px$ con vértice en el origen $V(0,0)$. Igualando coeficientes: $$4p = 12 \\Rightarrow p = \\frac{12}{4} = 3$$ Por tanto, el foco se ubica en $F(p, 0) = F(3, 0)$."
+  },
+  {
+    "id": "geoan-05",
+    "topic": "geometria_analitica",
+    "topicName": "Geometría Analítica",
+    "level": "licenciatura",
+    "difficulty": "alta",
+    "calculator": "none",
+    "question": "Dada la ecuación de la elipse:\n$$\\frac{x^2}{25} + \\frac{y^2}{9} = 1$$\n¿Cuál es la longitud de su eje mayor y la distancia focal $2c$?",
+    "options": [
+      "$$\\text{Eje mayor } = 10, \\quad 2c = 8$$",
+      "$$\\text{Eje mayor } = 5, \\quad 2c = 4$$",
+      "$$\\text{Eje mayor } = 10, \\quad 2c = 6$$",
+      "$$\\text{Eje mayor } = 25, \\quad 2c = 16$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "De la ecuación identificamos $a^2 = 25 \\Rightarrow a = 5$ y $b^2 = 9 \\Rightarrow b = 3$. El eje mayor mide $2a = 10$. La semidistancia focal cumple $c = \\sqrt{a^2 - b^2}$: $$c = \\sqrt{25 - 9} = \\sqrt{16} = 4 \\Rightarrow 2c = 8$$"
+  },
+  {
+    "id": "func-01",
+    "topic": "funciones",
+    "topicName": "Funciones y Precálculo",
+    "level": "bachillerato",
+    "difficulty": "sencilla",
+    "calculator": "none",
+    "question": "Determina el dominio de la función racional:\n$$f(x) = \\frac{2x - 1}{x - 4}$$",
+    "options": [
+      "$$\\mathbb{R} \\setminus \\{4\\}$$",
+      "$$\\mathbb{R} \\setminus \\left\\{\\frac{1}{2}\\right\\}$$",
+      "$$[4, \\infty)$$",
+      "$$\\mathbb{R}$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "Una función racional está definida en todos los reales salvo donde el denominador se hace cero: $$x - 4 = 0 \\Rightarrow x = 4$$ Por consiguiente, el dominio es $\\text{Dom}(f) = \\mathbb{R} \\setminus \\{4\\}$."
+  },
+  {
+    "id": "func-02",
+    "topic": "funciones",
+    "topicName": "Funciones y Precálculo",
+    "level": "licenciatura",
+    "difficulty": "media",
+    "calculator": "none",
+    "question": "Dadas las funciones $f(x) = 2x^2 + 1$ y $g(x) = 3x - 2$, determina el valor de la composición $(f \\circ g)(2)$:",
+    "options": [
+      "$$33$$",
+      "$$25$$",
+      "$$49$$",
+      "$$27$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "Por definición $(f \\circ g)(2) = f(g(2))$. Evaluamos primero $g(2)$: $$g(2) = 3(2) - 2 = 6 - 2 = 4$$ Ahora sustituimos en $f(x)$: $$f(4) = 2(4)^2 + 1 = 2(16) + 1 = 32 + 1 = 33$$"
+  },
+  {
+    "id": "func-03",
+    "topic": "funciones",
+    "topicName": "Funciones y Precálculo",
+    "level": "licenciatura",
+    "difficulty": "alta",
+    "calculator": "intermediate",
+    "question": "¿Cuál es la función inversa $f^{-1}(x)$ de la función biyectiva $f(x) = \\frac{3x + 5}{x - 2}$, con $x \\neq 2$?",
+    "options": [
+      "$$f^{-1}(x) = \\frac{2x + 5}{x - 3}$$",
+      "$$f^{-1}(x) = \\frac{x - 2}{3x + 5}$$",
+      "$$f^{-1}(x) = \\frac{3x - 5}{x + 2}$$",
+      "$$f^{-1}(x) = \\frac{2x - 5}{x + 3}$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "Sustituimos $f(x)$ por $y$ y despejamos $x$: $$y = \\frac{3x + 5}{x - 2} \\Rightarrow y(x - 2) = 3x + 5 \\Rightarrow xy - 2y = 3x + 5$$ Agrupando los términos con $x$: $$xy - 3x = 2y + 5 \\Rightarrow x(y - 3) = 2y + 5 \\Rightarrow x = \\frac{2y + 5}{y - 3}$$ Intercambiando $x$ por $y$, obtenemos: $$f^{-1}(x) = \\frac{2x + 5}{x - 3}$$"
+  },
+  {
+    "id": "func-04",
+    "topic": "funciones",
+    "topicName": "Funciones y Precálculo",
+    "level": "bachillerato",
+    "difficulty": "media",
+    "calculator": "none",
+    "question": "¿Cuál es el dominio de la función con radical par $f(x) = \\sqrt{3x - 12}$ en los números reales?",
+    "options": [
+      "$$[4, \\infty)$$",
+      "$$(4, \\infty)$$",
+      "$$[-4, \\infty)$$",
+      "$$(-\\infty, 4]$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "Para que la raíz cuadrada tome valores reales, el radicando debe ser mayor o igual que cero: $$3x - 12 \\ge 0 \\Rightarrow 3x \\ge 12 \\Rightarrow x \\ge \\frac{12}{3} = 4$$ Por lo tanto, $\\text{Dom}(f) = [4, \\infty)$."
+  },
+  {
+    "id": "func-05",
+    "topic": "funciones",
+    "topicName": "Funciones y Precálculo",
+    "level": "licenciatura",
+    "difficulty": "alta",
+    "calculator": "none",
+    "question": "Evalúa el siguiente límite indeterminado de la forma $\\frac{0}{0}$:\n$$\\lim_{x \\to 4} \\frac{x^2 - 2x - 8}{x - 4}$$",
+    "options": [
+      "$$6$$",
+      "$$2$$",
+      "$$4$$",
+      "$$0$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "Factorizando el numerador $x^2 - 2x - 8 = (x - 4)(x + 2)$: $$\\lim_{x \\to 4} \\frac{(x - 4)(x + 2)}{x - 4} = \\lim_{x \\to 4} (x + 2) = 4 + 2 = 6$$"
+  },
+  {
+    "id": "calc-01",
+    "topic": "calculo_diferencial",
+    "topicName": "Cálculo Diferencial",
+    "level": "bachillerato",
+    "difficulty": "sencilla",
+    "calculator": "none",
+    "question": "Calcula el siguiente límite:\n$$\\lim_{x \\to 3} \\frac{x^2 - 9}{x - 3}$$",
+    "options": [
+      "$$6$$",
+      "$$0$$",
+      "$$3$$",
+      "$$\\text{No existe}$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "Al evaluar directamente obtenemos la indeterminación $\\frac{0}{0}$. Factorizamos la diferencia de cuadrados en el numerador: $$\\lim_{x \\to 3} \\frac{(x - 3)(x + 3)}{x - 3} = \\lim_{x \\to 3} (x + 3) = 3 + 3 = 6$$"
+  },
+  {
+    "id": "calc-02",
+    "topic": "calculo_diferencial",
+    "topicName": "Cálculo Diferencial",
+    "level": "licenciatura",
+    "difficulty": "media",
+    "calculator": "none",
+    "question": "Encuentra la derivada de la función:\n$$f(x) = (3x^2 - 5x + 2)^4$$",
+    "options": [
+      "$$f'(x) = 4(6x - 5)(3x^2 - 5x + 2)^3$$",
+      "$$f'(x) = 4(3x^2 - 5x + 2)^3$$",
+      "$$f'(x) = (24x - 20)(3x^2 - 5x + 2)^4$$",
+      "$$f'(x) = 12x(3x^2 - 5x + 2)^3$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "Aplicando la regla de la cadena $\\frac{d}{dx}[u^n] = n u^{n-1} \\cdot u'$: $$f'(x) = 4(3x^2 - 5x + 2)^3 \\cdot \\frac{d}{dx}(3x^2 - 5x + 2) = 4(6x - 5)(3x^2 - 5x + 2)^3$$"
+  },
+  {
+    "id": "calc-03",
+    "topic": "calculo_diferencial",
+    "topicName": "Cálculo Diferencial",
+    "level": "licenciatura",
+    "difficulty": "alta",
+    "calculator": "none",
+    "question": "Determina las coordenadas del punto de inflexión de la función:\n$$f(x) = x^3 - 6x^2 + 9x + 2$$",
+    "options": [
+      "$$(2, 4)$$",
+      "$$(1, 6)$$",
+      "$$(3, 2)$$",
+      "$$(2, 0)$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "Calculamos la primera y segunda derivada: $$f'(x) = 3x^2 - 12x + 9, \\qquad f''(x) = 6x - 12$$ Igualamos la segunda derivada a cero para hallar el punto de inflexión: $$6x - 12 = 0 \\Rightarrow x = 2$$ Evaluamos en la función original: $$f(2) = (2)^3 - 6(2)^2 + 9(2) + 2 = 8 - 24 + 18 + 2 = 4$$ El punto de inflexión es $(2, 4)$."
+  },
+  {
+    "id": "calc-04",
+    "topic": "calculo_diferencial",
+    "topicName": "Cálculo Diferencial",
+    "level": "bachillerato",
+    "difficulty": "sencilla",
+    "calculator": "none",
+    "question": "Calcula la derivada de la función polinomial:\n$$f(x) = 5x^4 - 3x^3 + 7x - 9$$",
+    "options": [
+      "$$f'(x) = 20x^3 - 9x^2 + 7$$",
+      "$$f'(x) = 20x^3 - 9x^2 + 7x$$",
+      "$$f'(x) = 5x^3 - 3x^2 + 7$$",
+      "$$f'(x) = 20x^4 - 9x^3 + 7$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "Aplicando la regla de la potencia $\\frac{d}{dx}[cx^n] = cnx^{n-1}$ término a término: $$f'(x) = 5(4x^3) - 3(3x^2) + 7(1) - 0 = 20x^3 - 9x^2 + 7$$"
+  },
+  {
+    "id": "calc-05",
+    "topic": "calculo_diferencial",
+    "topicName": "Cálculo Diferencial",
+    "level": "licenciatura",
+    "difficulty": "media",
+    "calculator": "none",
+    "question": "Determina la primera derivada de la función trigonométrica:\n$$f(x) = 3\\sin(4x) - 2\\cos(5x)$$",
+    "options": [
+      "$$f'(x) = 12\\cos(4x) + 10\\sin(5x)$$",
+      "$$f'(x) = 12\\cos(4x) - 10\\sin(5x)$$",
+      "$$f'(x) = 3\\cos(4x) + 2\\sin(5x)$$",
+      "$$f'(x) = -12\\cos(4x) + 10\\sin(5x)$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "Usando $\\frac{d}{dx}[\\sin(kx)] = k\\cos(kx)$ y $\\frac{d}{dx}[\\cos(kx)] = -k\\sin(kx)$: $$f'(x) = 3(4\\cos(4x)) - 2(-5\\sin(5x)) = 12\\cos(4x) + 10\\sin(5x)$$"
+  },
+  {
+    "id": "calc-06",
+    "topic": "calculo_diferencial",
+    "topicName": "Cálculo Diferencial",
+    "level": "licenciatura",
+    "difficulty": "alta",
+    "calculator": "none",
+    "question": "Determina el valor de $x$ donde la función $f(x) = x^3 - 3x^2 - 9x + 5$ alcanza su mínimo relativo:",
+    "options": [
+      "$$x = 3$$",
+      "$$x = -1$$",
+      "$$x = 1$$",
+      "$$x = -3$$"
+    ],
+    "correctIndex": 0,
+    "explanation": "Hallamos los puntos críticos igualando la primera derivada a cero: $$f'(x) = 3x^2 - 6x - 9 = 3(x^2 - 2x - 3) = 3(x - 3)(x + 1) = 0$$ Los valores críticos son $x = 3$ y $x = -1$. Aplicando el criterio de la segunda derivada $f''(x) = 6x - 6$: $$f''(3) = 6(3) - 6 = 12 \\gt  0 \\Rightarrow \\text{Mínimo relativo en } x = 3$$"
+  }
+]
